@@ -4,3 +4,4 @@ PyPDF2
 docx
 pandas
 langchain
+exceptions
