@@ -6,4 +6,3 @@ langchain
 python-dotenv
 pinecone-client
 pinecone
-```
