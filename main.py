@@ -20,6 +20,10 @@ if "similar_text" not in st.session_state:
 if "answer" not in st.session_state:
     st.session_state.answer = None
 
+st.success("DocsGuru is ready to answer your questions!\
+           Upload any docs of types .txt, .pdf, .csv, .xlsx, or .xls, and\
+           DocsGuru can speak intelligently about whatever you upload.")
+
 embeddings = OpenAIEmbeddings()
 
 def convert_pdf_to_text(file):
@@ -134,10 +138,6 @@ def get_llm_response(user_question:str):
             return answer
         except:
             continue
-
-st.success("DocsGuru is ready to answer your questions!\
-           Upload any docs of types .txt, .pdf, .csv, .xlsx, or .xls, and\
-           DocsGuru can speak intelligently about whatever you upload.")
 
 if st.session_state.db:
     question = st.text_input("Enter your question")
