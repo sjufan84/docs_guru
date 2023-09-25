@@ -1,8 +1,9 @@
-pysqlite3
 openai
 streamlit 
 PyPDF2
 pandas
 langchain
 python-dotenv
-chromadb
+pinecone-client
+pinecone
+```

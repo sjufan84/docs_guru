@@ -1,14 +1,17 @@
 import streamlit as st
 import PyPDF2
 import pandas as pd
+import pinecone
 from langchain.embeddings import OpenAIEmbeddings
-from langchain.vectorstores import Chroma
+from langchain.vectorstores import Pinecone
 import openai
 import os
 from dotenv import load_dotenv
 load_dotenv()
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
+pinecone.init(api_key=os.getenv("PINECONE_KEY"), environment=os.getenv("PINECONE_ENV"))
+index = pinecone.Index(index_name="docs_guru")
 
 if "db" not in st.session_state:
     st.session_state.db = None
@@ -58,7 +61,7 @@ def create_vector_store(uploaded_files):
 
     # Step 4: Text Embedding
     # Create a vector store of the text chunks
-    db = Chroma.from_texts(chunks, embeddings)
+    db = Pinecone.from_texts(chunks, embeddings, index_name="docs-guru")
 
     return db
 
