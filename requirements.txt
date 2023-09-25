@@ -5,3 +5,4 @@ pandas
 langchain
 python-dotenv
 pinecone-client
+tiktoken
