@@ -85,7 +85,7 @@ with container:
         with st.spinner("Uploading files..."):
             st.session_state.db = create_vector_store(uploaded_files)
             # If the vector store is successfully created, display a success message
-            container.success("Vector store successfully created!")
+            container.success("Vector store successfully created.  Ask away!")
 
 def get_similar_text(user_query):
     """ Search the vector store for similar text """
