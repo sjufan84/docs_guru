@@ -1,6 +1,5 @@
 import streamlit as st
 import PyPDF2
-from docx import Document
 import pandas as pd
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
