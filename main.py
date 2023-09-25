@@ -24,10 +24,6 @@ def convert_pdf_to_text(file):
     pdf_reader = PyPDF2.PdfReader(file)
     return " ".join([pdf_reader.pages[i].extract_text() for i in range(0, len(pdf_reader.pages))])
 
-def convert_docx_to_text(file):
-    doc = Document(file)
-    return " ".join([para.text for para in doc.paragraphs])
-
 def convert_csv_to_text(file):
     df = pd.read_csv(file)
     return " ".join(df.apply(lambda row: ' '.join(row.astype(str)), axis=1))
@@ -44,8 +40,6 @@ def create_vector_store(uploaded_files):
         
         if file_type == 'pdf':
             texts.append(convert_pdf_to_text(uploaded_file))
-        elif file_type == 'docx':
-            texts.append(convert_docx_to_text(uploaded_file))
         elif file_type == 'csv':
             texts.append(convert_csv_to_text(uploaded_file))
         elif file_type in ['xlsx', 'xls']:
@@ -73,7 +67,7 @@ def create_vector_store(uploaded_files):
 container = st.container()
 # Step 1: Multi-file Upload
 with container:
-    uploaded_files = st.file_uploader("Choose files", accept_multiple_files=True, type=['txt', 'pdf', 'docx', 'csv', 'xlsx', 'xls'])
+    uploaded_files = st.file_uploader("Choose files", accept_multiple_files=True, type=['txt', 'pdf', 'csv', 'xlsx', 'xls'])
 
     texts = []
 
@@ -140,7 +134,7 @@ def get_llm_response(user_question:str):
             continue
 
 st.success("DocsGuru is ready to answer your questions!\
-           Upload any types of text documents and ask away!\
+           Upload any docs of types .txt, .pdf, .csv, .xlsx, or .xls, and\
            DocsGuru can speak intelligently about whatever you upload.")
 
 if st.session_state.db:
