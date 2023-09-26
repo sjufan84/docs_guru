@@ -118,7 +118,7 @@ def get_llm_response(user_question:str):
     ]
     
     # List of models to use
-    models = ["gpt-4", "gpt-3.5-turbo-16k-0613", "gpt-3.5-turbo-16k", "gpt-3.5-turbo-0613",
+    models = ["gpt-3.5-turbo-16k-0613", "gpt-3.5-turbo-16k", "gpt-3.5-turbo-0613",
     "gpt-3.5-turbo"]
 
         # Loop through the models and try to generate the recipe
